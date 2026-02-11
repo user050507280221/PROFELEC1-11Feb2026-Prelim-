@@ -1,0 +1,150 @@
+<html>
+    <head>
+        <script src="jQuery3.7.1.js"></script>
+    </head>
+    <body>
+<style>
+    .div1{
+        background-color:bisque;
+        padding: 2rem;
+        border-style:solid;
+        border-color: black;
+        width:850px;
+    }
+
+    .div2{
+        background-color:rgb(228, 204, 176);
+        padding: 2rem;
+        border-style:solid;
+        border-color: black;
+        width:850px;
+    }
+
+</style>
+        <h1 style="text-align: center; font-family: Lucida Console;">GRC GRADING SYSTEM</h1><br><br>
+    <div class="div1">
+        <h2 id="Stud_Info">Student Information</h2>
+        Enter ID: <input id="ID_num" type="text"><br><br>
+        Enter Name: <input id="Name" type="text"><br><br>
+        Enter Course and Section: <input id="Course" type="text"><br>
+    </div>
+    <div class="div2">
+        
+        <h2 id="Grde_Compt">Grade Computation</h2>
+        <!-- Midterm -->
+        <h3 id="Mid_Ex">Midterm 50%</h3>
+        Activities: ((( <input id="Act_Mid" type="text"> /  <input id="Act_Mid2" type="text"> ) * 50 ) + 50 ) * 40% <p id="err1"></p><br>
+        Quizzes: ((( <input id="Quiz_Mid" type="text"> /  <input id="Quiz_Mid2" type="text"> ) * 50 ) + 50 ) * 20% <p id="err2"></p><br>
+        Prelim: ((( <input id="Pre_Mid" type="text"> /  <input id="Pre_Mid2" type="text"> ) * 50 ) + 50 ) * 15% <p id="err3"></p><br>
+        Midterm: ((( <input id="Mid_Mid" type="text"> /  <input id="Mid_Mid2" type="text"> ) * 50 ) + 50 ) * 25% <p id="err4"></p><br>
+    
+        <!-- Final -->
+        <h3 id="Fin_Ex">Final 50%</h3>
+        Activities: ((( <input id="Act_Fin" type="text"> /  <input id="Act_Fin2" type="text"> ) * 50 ) * 40% <p id="err5"></p><br>
+        Quizzes: ((( <input id="Quiz_Fin" type="text"> /  <input id="Quiz_Fin2" type="text"> ) * 50 ) + 50 ) * 20% <p id="err6"></p><br>
+        Final: ((( <input id="Final" type="text"> /  <input id="Final2" type="text"> ) * 50 ) + 50 ) * 40% <p id="err7"></p><br>
+
+        <button id="btn">Get Text</button>
+        <button id="clear" style="display:none;">Clear</button>
+
+        <h3></h3><br>
+    </div>
+        <script>
+            $(document).ready(function () {
+                    $("input").on('input', function(){
+                        if($("input").val().length > 0){
+                            $("#clear").show();
+                        } else{
+                            $("#clear").hide();
+                        }
+                });
+    
+                    $("#btn").click(function () {
+                        $("#ID_num").text($("input").val());
+                        $("#Name").text($("input").val());
+                        $("#Course").text($("input").val());
+                        
+                    })
+
+    
+                    $("#clear").click(function (){
+                        $("input").val(' ');
+                        $("#clear").hide();
+                }).css({
+                    "color": "red"
+                });
+    
+
+                                $("#Act_Mid").on('input', function(){
+                                    if (isNaN($("#Act_Mid").val())) {
+                                            $("#err1").text("Please enter a number");
+                                    }
+                                
+
+                                });
+
+                                $("#Quiz_Mid").on('input', function(){
+                                    if (isNaN($("#Quiz_Mid").val())) {
+                                            $("#err2").text("Please enter a number");
+                                    }
+                                
+
+                                });
+
+                                $("#Pre_Mid").on('input', function(){
+                                    if (isNaN($("#Pre_Mid").val())) {
+                                            $("#err3").text("Please enter a number");
+                                    }
+                                
+
+                                });
+
+                                $("#Mid_Mid").on('input', function(){
+                                    if (isNaN($("#Mid_Mid").val())) {
+                                            $("#err4").text("Please enter a number");
+                                    }
+                                
+
+                                });
+
+                                $("#Act_Fin").on('input', function(){
+                                    if (isNaN($("#Act_Fin").val())) {
+                                            $("#err5").text("Please enter a number");
+                                    }
+                                
+
+                                });
+
+                                $("#Quiz_Fin").on('input', function(){
+                                    if (isNaN($("#Quiz_Fin").val())) {
+                                            $("#err6").text("Please enter a number");
+                                    }
+                                
+
+                                });
+
+                                $("#Final").on('input', function(){
+                                    if (isNaN($("#Final").val())) {
+                                            $("#err7").text("Please enter a number");
+                                    }
+                                
+
+                                });
+
+                                        $("btn").click(function () {
+                                        var str1;
+                                        var str2;
+
+                                        str1 = parseFloat($("#Act_Mid").val());
+                                        str2 = parseFloat($("#Quiz_Mid").val());
+                                        sum = str1 + str2;
+                                        
+                                        $("h3").text("The sum is " + sum + ".");
+                                    })
+
+
+                    
+            });
+        </script>
+    </body>
+</html>
